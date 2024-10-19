@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { userLogOut, userSet } from "../../store/slices/token.js";
+import { userLogOut  } from "../../store/slices/token.js";
 import Login from "./Login.js";
 import Modal from "../Modal.js";
 import Form from "./Form.js";
