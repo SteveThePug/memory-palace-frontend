@@ -1,15 +1,41 @@
-# React + TypeScript + Vite Frontend
+# React + TypeScript + Vite Frontend + Tailwindcss
 
-This project is a React-based frontend application built with TypeScript and Vite. It provides a user interface for a blog-like application with posts, comments, and user management.
+This project is a learning tool for me to explore and understand React, TypeScript, Vite, and Tailwindcss. I intend to use it as a memory palace, but in the mean-time I implementing basic blog functionality. Also, the posts include markdown so you can add as much math as you like! ^-^
 
 ## Table of Contents
 
-1. [Components](#components)
-2. [API](#api)
-3. [Store](#store)
-4. [Setup and Installation](#setup-and-installation)
-5. [Development](#development)
-6. [ESLint Configuration](#eslint-configuration)
+1. [Project Structure](#project-structure)
+2. [Components](#components)
+3. [API](#api)
+4. [Store](#store)
+5. [Setup and Installation](#setup-and-installation)
+6. [Development](#development)
+7. [ESLint Configuration](#eslint-configuration)
+
+## Project Structure
+
+The project follows a standard React application structure:
+
+```
+.
+├── public/
+├── src/
+│   ├── api/
+│   ├── assets/
+│   ├── components/
+│   ├── fonts/
+│   ├── hooks/
+│   ├── pages/
+│   ├── store/
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── styles.css
+├── index.html
+├── package.json
+├── tsconfig.json
+└── vite.config.ts
+└...
+```
 
 ## Components
 
@@ -57,24 +83,31 @@ The application uses Redux for state management. The store is configured in `src
 - `posts`: Manages the state of blog posts.
 - `users`: Handles user-related state.
 - `comments`: Manages the state of comments.
-- `token`: Handles authentication tokens.
+- `token`: Handles authentication token and logged in user.
 
 Each slice has its own reducer and actions defined in separate files within the `src/store/slices` directory.
 
 ## Setup and Installation
 
 1. Clone the repository.
-2. Run `npm install` to install dependencies.
-3. Use `npm run dev` to start the development server.
+2. Run `npm install` or `deno install` to install dependencies.
+3. Use `npm run dev` or `deno task dev` to start the development server.
 
 ## Development
 
-This project uses Vite for fast development and building. Key scripts:
+This project uses Vite for fast development and building.
 
+Using npm:
 - `npm run dev`: Start the development server.
 - `npm run build`: Build for production.
 - `npm run lint`: Run ESLint.
 - `npm run preview`: Preview the production build.
+
+Using deno:
+- `deno task dev`: Start the development server.
+- `deno task build`: Build for production.
+- `deno task lint`: Run ESLint.
+- `deno task preview`: Preview the production build.
 
 ## ESLint Configuration
 
