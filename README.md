@@ -1,58 +1,92 @@
-# React + TypeScript + Vite
+# React + TypeScript + Vite Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and
-some ESLint rules.
+This project is a React-based frontend application built with TypeScript and Vite. It provides a user interface for a blog-like application with posts, comments, and user management.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md)
-  uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc)
-  uses [SWC](https://swc.rs/) for Fast Refresh
+1. [Components](#components)
+2. [API](#api)
+3. [Store](#store)
+4. [Setup and Installation](#setup-and-installation)
+5. [Development](#development)
+6. [ESLint Configuration](#eslint-configuration)
 
-## Expanding the ESLint configuration
+## Components
 
-If you are developing a production application, we recommend updating the
-configuration to enable type aware lint rules:
+The application is composed of several key components:
 
-- Configure the top-level `parserOptions` property like this:
+- `Navbar`: Handles navigation and user authentication.
+  - `Form`: Reusable form component.
+  - `Login`: Handles user login.
+- `Posts`: Displays a list of blog posts.
+  - `Post`: Individual post component.
+- `Comments`: Manages comments for each post.
+  - `Comment`: Individual comment component.
+- `Users`: Displays user information.
+  - `User`: Individual user component.
+- `Modal`: Reusable modal component for various purposes.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
-```
+## API
 
-- Replace `tseslint.configs.recommended` to
-  `tseslint.configs.recommendedTypeChecked` or
-  `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install
-  [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and
-  update the config:
+The `api.ts` file in the `src/api` directory contains functions for interacting with the backend API. Key functions include:
 
-```js
-// eslint.config.js
-import react from "eslint-plugin-react";
+- Posts:
+  - `fetchPosts()`: Retrieves all posts.
+  - `fetchPost(post_id)`: Retrieves a specific post.
+  - `createPost(post)`: Creates a new post.
+  - `deletePost(post_id)`: Deletes a post.
+  - `updatePost(post_id, post)`: Updates an existing post.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: "18.3" } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs["jsx-runtime"].rules,
-  },
-});
-```
+- Comments:
+  - `fetchComments()`: Retrieves all comments.
+  - `addComment(comment)`: Adds a new comment.
+  - `deleteComment(comment_id)`: Deletes a comment.
+  - `updateComment(comment_id, comment)`: Updates an existing comment.
+
+- Users:
+  - `fetchUsers()`: Retrieves all users.
+  - `fetchUser(username)`: Retrieves a specific user.
+  - `signIn(creds)`: Handles user sign-in.
+  - `signUp(creds)`: Handles user registration.
+  - `deleteUser()`: Deletes the current user.
+
+## Store
+
+The application uses Redux for state management. The store is configured in `src/store/store.ts` and includes the following slices:
+
+- `posts`: Manages the state of blog posts.
+- `users`: Handles user-related state.
+- `comments`: Manages the state of comments.
+- `token`: Handles authentication tokens.
+
+Each slice has its own reducer and actions defined in separate files within the `src/store/slices` directory.
+
+## Setup and Installation
+
+1. Clone the repository.
+2. Run `npm install` to install dependencies.
+3. Use `npm run dev` to start the development server.
+
+## Development
+
+This project uses Vite for fast development and building. Key scripts:
+
+- `npm run dev`: Start the development server.
+- `npm run build`: Build for production.
+- `npm run lint`: Run ESLint.
+- `npm run preview`: Preview the production build.
+
+## ESLint Configuration
+
+The project uses ESLint for code linting. To enable type-aware lint rules for a production application:
+
+1. Configure the top-level `parserOptions` in the ESLint config file.
+2. Replace `tseslint.configs.recommended` with `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`.
+3. Optionally add `...tseslint.configs.stylisticTypeChecked`.
+4. Install and configure `eslint-plugin-react`.
+
+For detailed configuration, refer to the ESLint configuration section in the original README.
+
+---
+
+For more information about React, TypeScript, or Vite, please refer to their respective documentation.
