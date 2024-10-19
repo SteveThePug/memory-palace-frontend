@@ -7,7 +7,6 @@ export default function Home() {
     <div>
       <Posts />
       <Users />
-      <Comments />
     </div>
   );
 }

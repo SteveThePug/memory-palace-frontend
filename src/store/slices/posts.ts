@@ -23,10 +23,17 @@ const postsSlice = createSlice({
         post.comments.unshift(comment);
       }
     },
+    postsRemoveComment(state, action: PayloadAction<{ post_id: number; comment_id: number }>) {
+      const { post_id, comment_id } = action.payload;
+      const post = state.find((post) => post.post_id === post_id);
+      if (post && post.comments) {
+        post.comments = post.comments.filter((comment) => comment.comment_id !== comment_id);
+      }
+    },
   },
 });
 
-export const { postsUnshift, postsRemove, postsSet, postsUnshiftComment } =
+export const { postsUnshift, postsRemove, postsSet, postsUnshiftComment, postsRemoveComment } =
   postsSlice.actions;
 
 export const postsGet = (): AppThunk => async (dispatch) => {
@@ -63,6 +70,16 @@ export const addComment =
       dispatch(postsUnshiftComment(data));
     } catch (error) {
       console.error("Error adding comment:", (error as Error).message);
+    }
+  };
+
+export const deleteComment =
+  (post_id: number, comment_id: number): AppThunk => async (dispatch) => {
+    try {
+      await api.deleteComment(comment_id);
+      dispatch(postsRemoveComment({ post_id, comment_id }));
+    } catch (error) {
+      console.error("Error deleting comment:", (error as Error).message);
     }
   };
 

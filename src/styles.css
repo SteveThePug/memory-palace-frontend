@@ -141,24 +141,37 @@ h1 {
   color: var(--primary);
   font-family: var(--font-heading);
   font-size: var(--font-size-heading);
+  margin-bottom: 0.5em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 h2 {
   color: var(--secondary);
   font-family: var(--font-heading);
-  font-size: var(--font-size-heading);
+  font-size: calc(var(--font-size-heading) * 0.9);
   border-bottom: 2px solid var(--primary);
+  margin-bottom: 0.4em;
+  padding-bottom: 0.2em;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
 }
 
 h3 {
   color: var(--tertiary);
   font-family: var(--font-subheading);
-  font-size: var(--font-size-subheading);
+  font-size: calc(var(--font-size-subheading) * 0.9);
+  margin-bottom: 0.3em;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
 }
 
 h4 {
   font-family: var(--font-subheading);
-  font-size: var(--font-size-subheading);
+  font-size: calc(var(--font-size-subheading) * 0.8);
+  margin-bottom: 0.2em;
+  text-transform: capitalize;
+  letter-spacing: 0.3px;
 }
 
 p {
@@ -175,6 +188,18 @@ button {
   text-decoration: none;
   text-transform: capitalize;
   color: inherit;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: darken(var(--quaternary), 10%);
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
 }
 
 table {
@@ -221,4 +246,70 @@ textarea {
   border: 0px solid var(--primary);
   resize: none;
   font-family: var(--font-text);
+}
+
+.comment {
+  background-color: var(--background);
+  border: 1px solid var(--secondary);
+  padding: 16px;
+  margin-bottom: 12px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.comment:hover {
+  background-color: var(--quaternary);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.markdown {
+  height: 10em;
+  background: var(--quaternary);
+  border: 2px solid var(--secondary);
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: var(--font-text);
+  transition: background-color 0.3s ease;
+  overflow-y: scroll;
+}
+
+.markdown:hover {
+  background-color: #f0e6d6;
+}
+
+.modal {
+  opacity: 0;
+  animation: fadeIn 0.5s forwards, fadeOut 0.5s forwards 2.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.post {
+  background-color: var(--background);
+  border: 1px solid var(--secondary);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
